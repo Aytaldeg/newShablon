@@ -5,20 +5,16 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
-import { getPosts, getTodos } from '@/api';
+import { getPosts } from '@/api';
 
-import Todo from '@/types/Todo';
 import CodeViewer from '@/components/CodeViewer';
 import Posts from '@/types/Post';
 
 export default function App() {
-  const [data, setData] = useState<Todo[] | Posts[] | undefined | null>(
-    undefined
-  );
+  const [data, setData] = useState<Posts[] | undefined | null>(undefined);
 
   useEffect(() => {
     (async () => {
-      // const resposne = await getTodos();
       const resposne = await getPosts();
 
       if (resposne.success) {
